@@ -14,3 +14,13 @@
 .roboto-font{
     font-family: "Roboto", sans-serif;
 }
+
+li{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    color: #03071299;
+}
