@@ -10,21 +10,32 @@ function getTicketElement(){
 const allSeat = document.querySelectorAll(".seat");
     let count = 0;
     let totalSeat = 40;
-    // console.log(price,busClass)
-for(const seats of allSeat){
-    seats.addEventListener("click",function(e){
-        seats.style.backgroundColor = "#1dd100";
 
+// console.log(price,busClass)
+for(const seats of allSeat){
+    
+    seats.addEventListener("click",function(e){
+        
         count += 1;
+
+        if(count>=5){
+            return;
+        }
+
+        seats.style.backgroundColor = "#1dd100";
+        
         totalSeat -= 1;
+        
+
         setInnerText('seat-number',count);
+        
         setInnerText('total-seat',totalSeat);
+        
+
         const seatName = e.target.innerText;
         // console.log(e.target.innerText)
         const price = 550;
         const busClass = "Economy";
-        
-
         const selectedTicket = document.getElementById("selected-ticket-container");
         const li = document.createElement("li");
         const t = document.createElement("p");
@@ -40,6 +51,7 @@ for(const seats of allSeat){
 
         selectedTicket.appendChild(li);
         totalCost("total-cost",parseInt(price));
+
         grandTotalCost("grand-total",parseInt(price));
     })
 }
@@ -63,11 +75,11 @@ function grandTotalCost(){
 
     const inputValue = document.getElementById("input-value").value
 
-    if (inputValue === 'NEW15'){
+    if (count === 4 && inputValue === 'NEW15'){
         const offerGrandTotal = convertedTotalCost - convertedTotalCost*15/100;
         setInnerText("grand-total",offerGrandTotal);
     }
-    else if (inputValue === 'Couple 20'){
+    else if (count === 4 && inputValue === 'Couple 20'){
         const offerGrandTotal = convertedTotalCost - convertedTotalCost*20/100;
         setInnerText("grand-total",offerGrandTotal);
     }
@@ -75,5 +87,6 @@ function grandTotalCost(){
 
         setInnerText("grand-total",convertedTotalCost);
     }
-
 }
+
+
